@@ -1,41 +1,41 @@
 <template>
-  <div class="min-h-screen bg-gray-100 flex items-center justify-center">
-    <div class="max-w-5xl w-full bg-white shadow-lg rounded-lg overflow-hidden">
-      <div class="p-6">
-        <h1 class="text-3xl font-bold">Lista de Pokémon</h1>
-        <div class="grid grid-cols-2 gap-4">
-          <div
-            v-for="pokemon in pokemons"
-            :key="pokemon.name"
-            class="bg-white shadow-md rounded-lg overflow-hidden h-[300px] "
-          >
-            <NuxtLink :to="`/pokemon?name=${pokemon.name}`">
-              <img
-                class="w-full"
-                :src="pokemon.sprite"
-                :alt="pokemon.name"
-              />
-            </NuxtLink>
-            <div class="p-4">
-              <NuxtLink :to="`/pokemon?name=${pokemon.name}`" class="block text-center font-bold text-xl capitalize mb-2">
-                {{ pokemon.name }}
-              </NuxtLink>
-              <p class="text-gray-700 text-center">ID: {{ pokemon.id }}</p>
-              <div class="flex justify-center flex-wrap mt-2">
-                <span
-                  v-for="type in pokemon.types"
-                  :key="type"
-                  class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-                >
-                  {{ type }}
-                </span>
-              </div>
+  <div class="p-6">
+    <h1 class="text-3xl font-bold">POKEDEX</h1>
+    <br>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+      <NuxtLink
+        v-for="pokemon in pokemons"
+        :key="pokemon.name"
+        :to="`/pokemon?name=${pokemon.name}`"
+        class="relative flex flex-col min-h-[130px] grass text-white px-5 pt-6 shadow-md rounded-2xl overflow-hidden"
+      >
+        <div class="relative z-10">
+          <div class="flex justify-end items-start">
+            <p class="text-gray-700">{{ pokemon.id }}</p>
+          </div>
+          <div class="absolute top-2 left px-3 py-1 font-semibold text-gray-700">
+            {{ MayusculaLetra(pokemon.name) }}
+          </div>
+          <div class="flex flex-col w-fit mt-2">
+            <div
+              v-for="type in pokemon.types"
+              :key="type"
+              class="bg-gray-200 rounded-full px-1.5 py-0.5 text-sm font-semibold text-gray-700"
+            >
+              {{ type }}
             </div>
           </div>
         </div>
-      </div>
+        <div class="absolute bottom-2 right-2">
+          <img
+            class="w-30 h-30"
+            :src="pokemon.sprite"
+            :alt="pokemon.name"
+          />
+        </div>
+      </NuxtLink>
     </div>
-  </div>        
+  </div>
 </template>
 
 <script setup>
@@ -49,7 +49,6 @@ if (error.value) {
 }
 
 const pokemonsRaw = pokemonsData.value?.results || [];
-
 
 const pokemons = await Promise.all(
   pokemonsRaw.map(async (pokemon) => {

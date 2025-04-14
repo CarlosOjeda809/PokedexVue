@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+body {
+    margin: 0;
+    padding: 0;
+  }
