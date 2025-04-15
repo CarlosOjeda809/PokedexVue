@@ -5,3 +5,23 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  .fire {
+    background-color: rgb(245, 148, 148);
+  }
+
+  .grass {
+    background-color: rgb(153, 216, 153);
+  }
+
+  .water {
+    background-color: rgb(114, 114, 240);
+  }
+
+  .normal {
+    background-color: rgb(196, 196, 196);
+  } 
+
+  .bug {
+    background-color: rgb(209, 209, 125);
+  }
