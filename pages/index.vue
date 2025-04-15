@@ -1,6 +1,6 @@
 <template>
   <div class="p-6">
-    <h1 class="text-3xl font-bold">POKEDEX</h1>
+    <h1 class="text-3xl font-bold">POKEDEX</h1> 
     <br>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
       <NuxtLink
@@ -13,7 +13,7 @@
       <img src="/public/img/pokeball.png" class="absolute -bottom-6 -right-4 opacity-30 h-[100px]" ></img>
         <div class="absolute inset-0 bg-gray-200/20 rounded-2xl p-4 flex flex-col justify-between">
           <div class="flex justify-end items-start">
-            <p class="text-gray-700 font-bold top-3 ">{{ pokemon.id }}</p>
+            <p class="text-gray-700 font-bold top-3 opacity-20 ">#{{ pokemon.id }}</p>
           </div>
           <div class="absolute py-2 text-xl font-bold text-white text-gray-700">
             {{ MayusculaLetra(pokemon.name) }}

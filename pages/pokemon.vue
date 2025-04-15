@@ -3,7 +3,7 @@
     <div class="p-6">
       <div class="flex justify-between items-center mb-4">
         <NuxtLink :to="{ name: 'index' }"><Icon name="material-symbols:arrow-back-rounded" class="text-3xl"></Icon></NuxtLink>
-        <button @click="isFavorite = !isFavorite;">
+        <button @click="toggleFavorito">
         <Icon 
           :name="isFavorite ? 'material-symbols:favorite' : 'material-symbols:favorite-outline'" 
           class="text-3xl mt-2"
@@ -154,6 +154,7 @@ const route = useRoute();
 const pokemonName = route.query.name;
 
 
+
 if (!pokemonName) {
   console.error('No se proporcionó el nombre del Pokémon en la URL.');
 }
@@ -163,6 +164,36 @@ const { data: pokemonData, error } = await useFetch(`https://pokeapi.co/api/v2/p
 if (error.value) {
   console.error('Error al obtener los datos del Pokémon:', error.value);
 }
+
+const obtenerFavoritos = () => {
+  const favoritos = localStorage.getItem('favoritos');
+  return favoritos ? JSON.parse(favoritos) : [];
+};
+
+const guardarFavoritos = (favoritos) => {
+  localStorage.setItem('favoritos', JSON.stringify(favoritos));
+};
+
+const toggleFavorito = () => {
+  const favoritos = obtenerFavoritos();
+  if (isFavorite.value) {
+    const nuevosFavoritos = favoritos.filter((nombre) => nombre !== pokemon.name);
+    guardarFavoritos(nuevosFavoritos);
+    isFavorite.value = false;
+  } else {
+    favoritos.push(pokemon.name);
+    guardarFavoritos(favoritos);
+    isFavorite.value = true;
+  }
+};
+
+onMounted(() => {
+  const favoritos = obtenerFavoritos();
+  isFavorite.value = favoritos.includes(pokemon.name);
+});
+
+
+
 
 const porcentajesGenero = await genderRate(pokemonData.value?.name);
 
