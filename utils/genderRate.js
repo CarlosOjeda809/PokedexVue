@@ -1,7 +1,7 @@
 export async function genderRate(pokemonName) {
     try {
       
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`);
+      const response = await fetch(`${API_URL}/pokemon-species/${pokemonName}`);
       const data = await response.json();
   
       const genderRate = data.gender_rate;

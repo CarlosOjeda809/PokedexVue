@@ -1,5 +1,5 @@
 export async function cadenaEvolutiva(pokemonName) {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`);
+        const response = await fetch(`${API_URL}/pokemon-species/${pokemonName}`);
         const dataSpecies = await response.json();
 
         const evolutionChainUrl = dataSpecies.evolution_chain.url;
@@ -14,7 +14,7 @@ export async function cadenaEvolutiva(pokemonName) {
         while (currentEvolution) {
             const evolutionName = currentEvolution.species.name;
 
-            const pokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon/${evolutionName}`);
+            const pokemonResponse = await fetch(`${API_URL}/pokemon/${evolutionName}`);
             const pokemonData = await pokemonResponse.json();
 
             evolutions.push({

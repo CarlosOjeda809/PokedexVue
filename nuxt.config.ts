@@ -3,9 +3,4 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/ui', 'nuxt-icons'],
   css: ['~/assets/css/main.css'],
-  runtimeConfig: {
-    public: {
-      URLPokemon: 'https://pokeapi.co/api/v2/'  
-    }
-  }
 });
