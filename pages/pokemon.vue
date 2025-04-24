@@ -142,7 +142,7 @@ const toggleFavorito = () => {
           </div>
         </div>
         <div class="flex justify-center">
-          <img :src="pokemon.sprite" alt="Sprite" class="w-[200px] md:w-[250px] lg:w-[300px] object-contain" />
+          <img @click="navigateTo('/')" :src="pokemon.sprite" alt="Sprite" class="w-[200px] md:w-[250px] lg:w-[300px] object-contain cursor-pointer" />
         </div>
       </div>
 
