@@ -3,10 +3,6 @@ import { useRoute } from 'vue-router';
 import { useFetch } from '#app';
 import Spinner from '@/components/spinner.vue';
 
-// Assuming MayusculaLetra, generoPokemon, genderRate, cadenaEvolutiva, API_URL are defined elsewhere
-// and Icon component is available (e.g., globally registered or imported)
-
-
 const route = useRoute();
 const pokemonName = route.query.name;
 
@@ -45,8 +41,8 @@ onMounted(async () => {
       exp: pokemonData.value?.base_experience || 'N/A',
       abilities: pokemonData.value?.abilities.map((ability) => ability.ability.name) || [],
       sprite: pokemonData.value?.sprites.front_default || '',
-      height: pokemonData.value?.height ? pokemonData.value.height / 10 : 'N/A', // Check if exists before dividing
-      weight: pokemonData.value?.weight ? pokemonData.value.weight / 10 : 'N/A', // Check if exists before dividing
+      height: pokemonData.value?.height ? pokemonData.value.height / 10 : 'N/A',
+      weight: pokemonData.value?.weight ? pokemonData.value.weight / 10 : 'N/A',
       gender: genero,
       genderRate: generoProb,
       evolution: evolutionChain,
@@ -63,7 +59,7 @@ onMounted(async () => {
 
   } catch (e) {
     console.error("Error processing additional pokemon data:", e);
-    // Set pokemon.value with basic data even if helpers fail
+
     pokemon.value = {
       name: pokemonData.value?.name || 'Desconocido',
       id: pokemonData.value?.id || 'N/A',
@@ -115,10 +111,14 @@ const toggleFavorito = () => {
 };
 </script>
 
+<!-- LOADING -->
+
 <template>
   <div v-if="loading">
     <Spinner />
   </div>
+
+  <!-- PARTE DE ARRIBA -->
 
   <div v-if="!loading" class="mx-auto relative " :class="pokemon.types[0]">
     <div class="p-6">
@@ -146,7 +146,7 @@ const toggleFavorito = () => {
         </div>
       </div>
 
-
+      <!-- PARTE DE ABAJO -->
 
       <div class="bg-white rounded-t-[25px] absolute left-0 w-full">
         <div class="flex justify-center border-b border-gray-300">
@@ -159,6 +159,8 @@ const toggleFavorito = () => {
             </button>
           </div>
         </div>
+
+        <!-- ABOUT -->
 
         <div v-if="activeTab === 'About'" class="p-8">
           <Spinner v-if="loading" />
@@ -205,6 +207,7 @@ const toggleFavorito = () => {
           </div>
         </div>
 
+        <!-- BASE STATS -->
 
         <div v-if="activeTab === 'Base Stats'" class="p-8">
           <Spinner v-if="loading" />
@@ -222,6 +225,8 @@ const toggleFavorito = () => {
           </ul>
         </div>
 
+        <!-- EVOLUTIONS -->
+
         <div v-if="activeTab === 'Evolution'" class="p-8">
           <Spinner v-if="loading" />
           <ul class="flex flex-col items-start space-y-4 shadow-xl rounded-2xl p-5">
@@ -237,6 +242,8 @@ const toggleFavorito = () => {
             </li>
           </ul>
         </div>
+
+        <!-- MOVES -->
 
         <div v-if="activeTab === 'Moves'">
           <Spinner v-if="loading" />
