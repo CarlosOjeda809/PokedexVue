@@ -9,21 +9,70 @@ body {
   .fire {
     background-color: rgb(245, 148, 148);
   }
-
-  .grass {
+  
+  .grass {  
     background-color: rgb(153, 216, 153);
-  }
-
+  } 
+  
   .water {
     background-color: rgb(114, 114, 240);
   }
-
+  
   .normal {
     background-color: rgb(196, 196, 196);
-  } 
-
+  }
+  
   .bug {
     background-color: rgb(209, 209, 125);
   }
+  
+  .electric {
+    background-color: rgb(255, 255, 150);
+  }
+  
+  .ice {
+    background-color: rgb(186, 219, 244);
+  }
+  
+  .fairy {
+    background-color: rgb(255, 182, 236);
+  }
+  
+  .poison {
+    background-color: rgb(178, 127, 178);
+  }
+  
+  .rock {
+    background-color: rgb(188, 162, 103);
+  }
+  
+  .ground {
+    background-color: rgb(186, 155, 115);
+  }
+  
+  .psychic {
+    background-color: rgb(211, 170, 255);
+  }
+  
+  .fighting {
+    background-color: rgb(255, 165, 145);
+  }
+  
+  .dark {
+    background-color: rgb(76, 76, 76);
+  }
+  
+  .dragon {
+    background-color: rgb(150, 150, 255);
+  }
+  
+  .ghost {
+    background-color: rgb(186, 187, 232);
+  }
+  
+  .steel {
+    background-color: rgb(183, 183, 183);
+  }
+  
 
  

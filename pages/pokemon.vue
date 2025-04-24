@@ -114,7 +114,7 @@ const toggleFavorito = () => {
       
 
       <!-- PARTE DE ABAJO -->
-      <div class="bg-white rounded-t-[25px] w-[100%] absolute left-0">
+      <div class="bg-white rounded-t-[25px]  absolute left-0">
         <div class="flex justify-center border-b border-gray-300">
           <div class="flex justify-between w-full ml-10 mr-10 mt-5">
             <button v-for="tab in tabs" :key="tab" @click="activeTab = tab" :class="[ 

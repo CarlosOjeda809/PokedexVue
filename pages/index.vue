@@ -1,8 +1,6 @@
 <script setup>
 const config = useRuntimeConfig();
-const { data: pokemonsData, error } = await useFetch(`${API_URL}/pokemon`, {
-  params: { limit: 18 },
-});
+const { data: pokemonsData, error } = await useFetch(`${API_URL}/pokemon`, {params: {limit: 151}});
 
 if (error.value) {
   console.error('Error al obtener la lista de Pokémon:', error.value);
@@ -29,7 +27,7 @@ const pokemons = await Promise.all(
     <h1 class="text-3xl font-bold">POKEDEX</h1>
     <br>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5">
-      <NuxtLink v-for="pokemon in pokemons" :key="pokemon.name" :to="`/pokemon?name=${pokemon.name}`"
+      <NuxtLink v-for="pokemon in pokemons" :key="pokemon.name" :to="`/pokemon?name=${pokemon.name}`" 
         class="relative flex flex-col min-h-[130px] text-white px-5 pt-6 shadow-md rounded-2xl overflow-hidden"
         :class="pokemon.types[0]">
         <img src="/public/img/pokeball.png" class="absolute -bottom-6 -right-4 opacity-30 h-[100px]"></img>
