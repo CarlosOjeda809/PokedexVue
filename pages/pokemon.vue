@@ -135,14 +135,17 @@ const toggleFavorito = () => {
           </div>
           <div class="flex items-center gap-2">
             <h1 class="text-2xl font-bold capitalize text-white">#{{ pokemon.id }}</h1>
-            <button @click="toggleFavorito" class="text-3xl">
+            <<button @click="toggleFavorito" class="text-2xl">
               <Icon :name="isFavorite ? 'material-symbols:favorite' : 'material-symbols:favorite-outline'"
-                class="text-red-500 mt-3 cursor-pointer transition duration-200" />
-            </button>
+                class="mt-3 cursor-pointer hover:text-red-500 transition-colors duration-300 ease-in-out"
+                :class="{ 'scale-125': isFavorite, 'scale-120': !isFavorite }" />
+              </button>
+
           </div>
         </div>
         <div class="flex justify-center">
-          <img @click="navigateTo('/')" :src="pokemon.sprite" alt="Sprite" class="w-[200px] md:w-[250px] lg:w-[300px] object-contain cursor-pointer" />
+          <img @click="navigateTo('/')" :src="pokemon.sprite" alt="Sprite"
+            class="w-[200px] md:w-[250px] lg:w-[300px] object-contain cursor-pointer" />
         </div>
       </div>
 
